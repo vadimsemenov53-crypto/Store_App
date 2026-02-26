@@ -7,4 +7,4 @@ def test_category_base(data_category):
     assert len(data_category.products) == 3
 
     assert Category.category_count == 1
-    assert Category.all_products_count == 3
+    assert Category.product_count == 3

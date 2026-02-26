@@ -24,7 +24,7 @@ def second_product():
 @pytest.fixture()
 def data_category():
     Category.category_count = 0
-    Category.all_products_count = 0
+    Category.product_count = 0
 
     product_1 = Product(
         "Samsung Galaxy S23 Ultra",

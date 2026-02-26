@@ -39,7 +39,7 @@ def test_read_json_wrong_json(mock_json, tmp_path):
 
 def test_create_obj_from_json(data_for_json_read):
     Category.category_count = 0
-    Category.all_products_count = 0
+    Category.product_count = 0
 
     result = create_obj_from_json(data_for_json_read)
 
@@ -48,4 +48,4 @@ def test_create_obj_from_json(data_for_json_read):
     assert len(result[0].products) == 1
 
     assert result[0].category_count == 1
-    assert result[0].all_products_count == 1
+    assert result[0].product_count == 1
