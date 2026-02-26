@@ -7,7 +7,7 @@ class Category:
     category_count = 0
     all_products_count = 0
 
-    def __init__(self, name, description, products=None):
+    def __init__(self, name:str, description:str, products: list | None=None):
         """Метод, который инициализирует экземпляры класса."""
         self.name = name
         self.description = description
