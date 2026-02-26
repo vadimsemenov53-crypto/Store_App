@@ -1,5 +1,5 @@
 class Category:
-    """Класс для """
+    """Класс для представления категорий товаров."""
     name: str
     description: str
     products : list
