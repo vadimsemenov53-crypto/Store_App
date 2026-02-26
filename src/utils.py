@@ -4,7 +4,7 @@ import json
 from json import JSONDecodeError
 from src.product import Product
 from src.categoty import Category
-from src.types import CategoryDict
+from src.types_utils import CategoryDict
 from typing import cast
 
 PATH = os.path.dirname(os.path.dirname(__file__))
@@ -23,7 +23,7 @@ def read_json(path_file: str | None =None) -> list[CategoryDict]:
 
     return data
 
-def create_obj_from_json(data_list: list[dict]) -> list[Category]:
+def create_obj_from_json(data_list: list[CategoryDict]) -> list[Category]:
     """Функция создания объектов класса из JSON-данных"""
     categories = []
 

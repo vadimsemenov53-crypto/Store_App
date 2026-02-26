@@ -23,6 +23,9 @@ def second_product():
 
 @pytest.fixture()
 def data_category():
+    Category.category_count = 0
+    Category.all_products_count = 0
+
     product_1 = Product(
         "Samsung Galaxy S23 Ultra",
         "256GB, Серый цвет, 200MP камера",
@@ -46,3 +49,22 @@ def data_category():
         "Средства не только коммуникации, но и получения дополнительных функций для удобства жизни",
         [product_1, product_2, product_3]
     )
+
+
+@pytest.fixture()
+def data_for_json_read():
+    data = [
+        {
+            "name": "Смартфоны",
+            "description": "Мобильные устройства",
+            "products": [
+                {
+                    "name": "iPhone",
+                    "description": "Apple phone",
+                    "price": 1000.0,
+                    "quantity": 5
+                }
+            ]
+        }
+    ]
+    return data
