@@ -1,7 +1,5 @@
-
-
 class Category:
-    """"""
+    """Класс для """
     name: str
     description: str
     products : list
@@ -10,7 +8,7 @@ class Category:
     all_products_count = 0
 
     def __init__(self, name, description, products=None):
-        """"""
+        """Метод, который инициализирует экземпляры класса."""
         self.name = name
         self.description = description
         self.products = products if products else []
