@@ -1,13 +1,14 @@
 class Category:
     """Класс для представления категорий товаров."""
+
     name: str
     description: str
-    products : list
+    products: list
 
     category_count = 0
     product_count = 0
 
-    def __init__(self, name:str, description:str, products: list | None=None):
+    def __init__(self, name: str, description: str, products: list | None = None):
         """Метод, который инициализирует экземпляры класса."""
         self.name = name
         self.description = description

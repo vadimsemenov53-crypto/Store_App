@@ -1,27 +1,29 @@
-import os
 import json
-
+import os
 from json import JSONDecodeError
-from src.product import Product
-from src.categoty import Category
-from src.types_utils import CategoryDict
 from typing import cast
+
+from src.categoty import Category
+from src.product import Product
+from src.types_utils import CategoryDict
 
 PATH = os.path.dirname(os.path.dirname(__file__))
 
-def read_json(path_file: str | None =None) -> list[CategoryDict]:
+
+def read_json(path_file: str | None = None) -> list[CategoryDict]:
     """Функция для чтения JSON файлов,
     принимает путь до файла, возвращает список словарей."""
     if not path_file:
-        path_file = os.path.join(PATH, 'data/products.json')
+        path_file = os.path.join(PATH, "data/products.json")
 
     try:
-        with open(path_file, 'r', encoding='utf-8') as file:
+        with open(path_file, "r", encoding="utf-8") as file:
             data = cast(list[CategoryDict], json.load(file))
-    except JSONDecodeError as error:
+    except JSONDecodeError:
         return []
 
     return data
+
 
 def create_obj_from_json(data_list: list[CategoryDict]) -> list[Category]:
     """Функция создания объектов класса из JSON-данных"""
@@ -30,7 +32,6 @@ def create_obj_from_json(data_list: list[CategoryDict]) -> list[Category]:
     for category in data_list:
         products = [Product(**product) for product in category["products"]]
 
-        category["products"] = products
-        categories.append(Category(**category))
+        categories.append(Category(name=category["name"], description=category["description"], products=products))
 
     return categories

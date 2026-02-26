@@ -1,9 +1,10 @@
 class Product:
     """Класс для представления товара."""
-    name : str
-    description : str
-    price : float
-    quantity : int
+
+    name: str
+    description: str
+    price: float
+    quantity: int
 
     def __init__(self, name: str, description: str, price: float, quantity: int):
         """Метод, который инициализирует экземпляры класса."""
