@@ -72,6 +72,6 @@ class Product:
             self.__price = new_price
 
     @classmethod
-    def clear_products(cls):
+    def clear_products(cls) -> None:
         """Метод для очистки списка товаров (для тестов)"""
         cls.__list_products.clear()

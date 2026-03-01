@@ -1,5 +1,7 @@
 from unittest.mock import patch
+
 from src.product import Product
+
 
 def test_product_base(first_product, second_product):
     Product.clear_products()
@@ -16,6 +18,7 @@ def test_product_base(first_product, second_product):
     assert second.price == 210000.0
     assert second.quantity == 8
 
+
 def test_product_property(first_product, second_product):
     Product.clear_products()
     first = Product(**first_product)
@@ -23,6 +26,7 @@ def test_product_property(first_product, second_product):
 
     assert len(first.list_products) == 2
     assert len(second.list_products) == 2
+
 
 def test_product_new_product_clone(first_product, second_product, data_new_product):
     Product.clear_products()
@@ -34,13 +38,14 @@ def test_product_new_product_clone(first_product, second_product, data_new_produ
     assert second.quantity == 8
     assert len(second.list_products) == 1
 
-    new_product = Product.new_product(data_new_product)
+    Product.new_product(data_new_product)
 
     assert second.name == "Iphone 15"
     assert second.description == "512GB, Gray space"
     assert second.price == 20033300.0
     assert second.quantity == 13
     assert len(second.list_products) == 1
+
 
 def test_product_new_product(first_product, second_product):
     Product.clear_products()
@@ -50,10 +55,9 @@ def test_product_new_product(first_product, second_product):
     assert len(first.list_products) == 2
     assert len(second.list_products) == 2
 
-    new_product = Product.new_product({"name":"Iphone 17",
-                                       "description":"512GB, Gray space",
-                                       "price":310000.0,
-                                       'quantity':5})
+    new_product = Product.new_product(
+        {"name": "Iphone 17", "description": "512GB, Gray space", "price": 310000.0, "quantity": 5}
+    )
 
     assert len(first.list_products) == 3
 
@@ -71,7 +75,7 @@ def test_product_price(first_product):
 
 @patch("src.product.input")
 def test_product_price_setter(mock_inp, capsys, first_product):
-    mock_inp.return_value = 'y'
+    mock_inp.return_value = "y"
 
     first = Product(**first_product)
     assert first.price == 180000.0
@@ -84,4 +88,4 @@ def test_product_price_setter(mock_inp, capsys, first_product):
 
     first.price = 0
     message = capsys.readouterr()
-    assert message.out == 'Цена не должна быть нулевая или отрицательная\n'
+    assert message.out == "Цена не должна быть нулевая или отрицательная\n"

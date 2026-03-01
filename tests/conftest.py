@@ -6,12 +6,17 @@ from src.product import Product
 
 @pytest.fixture()
 def first_product():
-    return {"name":"Samsung Galaxy S23 Ultra", "description":"256GB, Серый цвет, 200MP камера", "price":180000.0, "quantity":5}
+    return {
+        "name": "Samsung Galaxy S23 Ultra",
+        "description": "256GB, Серый цвет, 200MP камера",
+        "price": 180000.0,
+        "quantity": 5,
+    }
 
 
 @pytest.fixture()
 def second_product():
-    return {"name":"Iphone 15", "description":"512GB, Gray space", "price":210000.0, 'quantity':8}
+    return {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8}
 
 
 @pytest.fixture()
@@ -41,9 +46,11 @@ def data_for_json_read():
     ]
     return data
 
+
 @pytest.fixture()
 def data_new_product():
     return {"name": "Iphone 15", "description": "512GB", "price": 20033300.0, "quantity": 5}
+
 
 @pytest.fixture()
 def data_cat_add_product():
