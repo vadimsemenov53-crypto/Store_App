@@ -1,5 +1,6 @@
 from src.types_utils import ProductDict
 
+
 class Product:
     """Класс для представления товара."""
 
@@ -31,12 +32,12 @@ class Product:
          Если товар с таким именем уже существует —
         увеличивает количество и выбирает более высокую цену."""
         for product in cls.__list_products:
-            if product.name == dict_product['name']:
+            if product.name == dict_product["name"]:
 
-                if dict_product['price'] > product.__price:
-                    product.__price = dict_product['price']
+                if dict_product["price"] > product.__price:
+                    product.__price = dict_product["price"]
 
-                product.quantity += dict_product['quantity']
+                product.quantity += dict_product["quantity"]
 
                 return product
 
@@ -55,9 +56,17 @@ class Product:
             return
 
         if new_price < self.__price:
-            answer = str(input(f'Новая цена: {new_price} < Старой: {self.__price}. Ставим новую цену?'
-                               ' y (значит yes) или n (значит no): ')).strip().lower()
-            if answer == 'y':
+            answer = (
+                str(
+                    input(
+                        f"Новая цена: {new_price} < Старой: {self.__price}. Ставим новую цену?"
+                        " y (значит yes) или n (значит no): "
+                    )
+                )
+                .strip()
+                .lower()
+            )
+            if answer == "y":
                 self.__price = new_price
             else:
                 print("Цена осталась прежней: ", self.__price)
@@ -65,7 +74,7 @@ class Product:
             self.__price = new_price
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     product_1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product_2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
     product_3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
@@ -74,10 +83,9 @@ if __name__ == '__main__':
     print(product_2.quantity)
 
     print(product_3.list_products)
-    product_new = Product.new_product({"name": "Iphone 15",
-                                     "description": "512GB",
-                                     "price": 20033300.0,
-                                     "quantity": 5})
+    product_new = Product.new_product(
+        {"name": "Iphone 15", "description": "512GB", "price": 20033300.0, "quantity": 5}
+    )
 
     print(product_1.list_products)
     print(product_2.price)

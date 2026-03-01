@@ -1,5 +1,6 @@
 from src.product import Product
 
+
 class Category:
     """Класс для представления категорий товаров."""
 
@@ -24,10 +25,9 @@ class Category:
         """Метод просмотра товаров в виде строк"""
         list_products = []
         for item in self.__products:
-            list_products.append(f'{item.name}, {item.price} руб. Остаток: {item.quantity} шт.')
+            list_products.append(f"{item.name}, {item.price} руб. Остаток: {item.quantity} шт.")
 
-        return '\n'.join(list_products) if list_products else 'Категорий нет.'
-
+        return "\n".join(list_products) if list_products else "Категорий нет."
 
     def add_product(self, product: Product) -> None:
         """Метод добавления товаров в категорию"""
@@ -38,11 +38,11 @@ class Category:
         Category.product_count += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     product_1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     product_2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
 
-    cat_1 = Category('Смартфоны', 'Улучшение жизни', [product_1, product_2])
+    cat_1 = Category("Смартфоны", "Улучшение жизни", [product_1, product_2])
 
     print(cat_1.name)
     print(cat_1.description)
