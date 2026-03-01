@@ -44,3 +44,8 @@ def data_for_json_read():
 @pytest.fixture()
 def data_new_product():
     return {"name": "Iphone 15", "description": "512GB", "price": 20033300.0, "quantity": 5}
+
+@pytest.fixture()
+def data_cat_add_product():
+    Product.clear_products()
+    return Product("Nokia", "Синий", 1000.0, 1)
