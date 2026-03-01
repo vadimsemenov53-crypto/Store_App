@@ -68,29 +68,10 @@ class Product:
             )
             if answer == "y":
                 self.__price = new_price
-            else:
-                print("Цена осталась прежней: ", self.__price)
         else:
             self.__price = new_price
 
-
-if __name__ == "__main__":
-    product_1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product_2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product_3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-
-    print(product_2.price)
-    print(product_2.quantity)
-
-    print(product_3.list_products)
-    product_new = Product.new_product(
-        {"name": "Iphone 15", "description": "512GB", "price": 20033300.0, "quantity": 5}
-    )
-
-    print(product_1.list_products)
-    print(product_2.price)
-    print(product_2.quantity)
-
-    product_2.price = 22000
-    print(product_2.price)
-    print(product_2.__dict__)
+    @classmethod
+    def clear_products(cls):
+        """Метод для очистки списка товаров (для тестов)"""
+        cls.__list_products.clear()
