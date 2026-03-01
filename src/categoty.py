@@ -21,7 +21,7 @@ class Category:
         Category.product_count += len(self.__products)
 
     @property
-    def product(self) -> str:
+    def products(self) -> str:
         """Метод просмотра товаров в виде строк"""
         list_products = []
         for item in self.__products:

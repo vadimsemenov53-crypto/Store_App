@@ -48,7 +48,7 @@ def test_create_obj_from_json(data_for_json_read):
 
     assert result[0].name == "Смартфоны"
     assert result[0].description == "Мобильные устройства"
-    assert result[0].product == "iPhone, 1000.0 руб. Остаток: 5 шт."
+    assert result[0].products == "iPhone, 1000.0 руб. Остаток: 5 шт."
 
     assert result[0].category_count == 1
     assert result[0].product_count == 1
