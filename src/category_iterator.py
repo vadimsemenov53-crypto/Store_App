@@ -1,4 +1,3 @@
-from src.product import Product
 from src.categoty import Category
 
 class CategoryIterator:
@@ -25,20 +24,3 @@ class CategoryIterator:
 
         else:
             raise StopIteration
-
-
-if __name__ == "__main__":
-    product_1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
-    product_2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
-    product_3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
-
-    cat = Category(
-        "Смартфоны",
-        "Средства не только коммуникации, но и получения дополнительных функций для удобства жизни",
-        [product_1, product_2, product_3],
-    )
-
-    res = CategoryIterator(cat)
-
-    for i in res:
-        print(i)
