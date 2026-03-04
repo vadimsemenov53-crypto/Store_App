@@ -22,9 +22,9 @@ class Product:
 
     def __str__(self) -> str:
         """Метод, отображения продуктов."""
-        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other) -> float:
+    def __add__(self, other: "Product") -> float:
         """Метод сложения стоимости двух товаров, учитывая их количество."""
         return self.__price * self.quantity + other.price * other.quantity
 

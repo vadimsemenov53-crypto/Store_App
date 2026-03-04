@@ -96,8 +96,8 @@ def test_product_str(first_product, second_product):
     first = Product(**first_product)
     second = Product(**second_product)
 
-    assert str(first) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
-    assert str(second) == 'Iphone 15, 210000.0 руб. Остаток: 8 шт.'
+    assert str(first) == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+    assert str(second) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
 
 
 def test_product_add(first_product, second_product):
@@ -111,4 +111,3 @@ def test_product_add(first_product, second_product):
     assert second.quantity == 8
 
     assert first + second == 2580000.0
-

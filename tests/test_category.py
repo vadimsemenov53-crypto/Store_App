@@ -46,8 +46,8 @@ def test_category_add_error(data_category):
 
 
 def test_category_str(data_category, data_cat_add_product):
-    assert str(data_category) == 'Смартфоны, количество продуктов: 27 шт.'
+    assert str(data_category) == "Смартфоны, количество продуктов: 27 шт."
 
     data_category.add_product(data_cat_add_product)
 
-    assert str(data_category) == 'Смартфоны, количество продуктов: 28 шт.'
+    assert str(data_category) == "Смартфоны, количество продуктов: 28 шт."

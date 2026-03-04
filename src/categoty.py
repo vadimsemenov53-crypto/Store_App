@@ -27,7 +27,7 @@ class Category:
         for product in self.__products:
             count_all_products += product.quantity
 
-        return f'{self.name}, количество продуктов: {count_all_products} шт.'
+        return f"{self.name}, количество продуктов: {count_all_products} шт."
 
     @property
     def products(self) -> str:
