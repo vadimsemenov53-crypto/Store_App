@@ -43,3 +43,11 @@ def test_category_add(data_category, data_cat_add_product):
 def test_category_add_error(data_category):
     with pytest.raises(TypeError, match="Можно добавлять только объекты Product"):
         data_category.add_product({"name": "Iphone"})
+
+
+def test_category_str(data_category, data_cat_add_product):
+    assert str(data_category) == 'Смартфоны, количество продуктов: 27 шт.'
+
+    data_category.add_product(data_cat_add_product)
+
+    assert str(data_category) == 'Смартфоны, количество продуктов: 28 шт.'

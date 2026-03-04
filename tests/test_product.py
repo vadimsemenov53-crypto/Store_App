@@ -89,3 +89,12 @@ def test_product_price_setter(mock_inp, capsys, first_product):
     first.price = 0
     message = capsys.readouterr()
     assert message.out == "Цена не должна быть нулевая или отрицательная\n"
+
+
+def test_product_str(first_product, second_product):
+    Product.clear_products()
+    first = Product(**first_product)
+    second = Product(**second_product)
+
+    assert str(first) == 'Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.'
+    assert str(second) == 'Iphone 15, 210000.0 руб. Остаток: 8 шт.'
