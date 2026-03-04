@@ -30,6 +30,11 @@ class Category:
         return f"{self.name}, количество продуктов: {count_all_products} шт."
 
     @property
+    def product_list(self):
+        """Метод для вывода объектов __product"""
+        return self.__products
+
+    @property
     def products(self) -> str:
         """Метод просмотра товаров в виде строк"""
         list_products = []
