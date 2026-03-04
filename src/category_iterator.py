@@ -1,9 +1,11 @@
 from src.categoty import Category
 
+
 class CategoryIterator:
     """Класс для итерации по товарам категории."""
+
     category_obj: "Category"
-    index : int
+    index: int
 
     def __init__(self, category_obj: "Category"):
         """Метод, который инициализирует экземпляры класса."""
@@ -14,7 +16,7 @@ class CategoryIterator:
         self.index = 0
         return self
 
-    def __next__(self):
+    def __next__(self) -> str:
         if self.index < len(self.category.product_list):
             item = self.category.product_list[self.index].name
 
