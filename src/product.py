@@ -20,6 +20,14 @@ class Product:
 
         self.__class__.__list_products.append(self)
 
+    def __str__(self) -> str:
+        """Метод, отображения продуктов."""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other: "Product") -> float:
+        """Метод сложения стоимости двух товаров, учитывая их количество."""
+        return self.__price * self.quantity + other.price * other.quantity
+
     @property
     def list_products(self) -> list["Product"]:
         """Метод вывода списка объектов"""

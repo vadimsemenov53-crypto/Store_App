@@ -20,12 +20,26 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(self.__products)
 
+    def __str__(self) -> str:
+        """Метод, строкового отображения категорий и общего количества ее товаров"""
+        count_all_products = 0
+
+        for product in self.__products:
+            count_all_products += product.quantity
+
+        return f"{self.name}, количество продуктов: {count_all_products} шт."
+
+    @property
+    def product_list(self) -> list["Product"]:
+        """Метод для вывода объектов __product"""
+        return self.__products
+
     @property
     def products(self) -> str:
         """Метод просмотра товаров в виде строк"""
         list_products = []
         for item in self.__products:
-            list_products.append(f"{item.name}, {item.price} руб. Остаток: {item.quantity} шт.")
+            list_products.append(str(item))
 
         return "\n".join(list_products) if list_products else "Категорий нет."
 

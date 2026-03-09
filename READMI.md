@@ -44,6 +44,8 @@ Store_App/
 - list_products — property для получения всех товаров в виде списка объектов
 - price — property с проверкой цены и подтверждением снижения через input
 - clear_products() — classmethod для очистки списка товаров (используется в тестах)
+- str - Возвращает название категории и общее количество товаров (с учётом их количества).
+- product_list - Позволяет получить список объектов Product. Поддерживает использование в for.
 
 ### 🔹 Category
 #### Класс для представления категории товаров:
@@ -56,6 +58,8 @@ Store_App/
 - add_product(product: Product) — добавляет новый объект Product в категорию
 - product — property, возвращает строку со списком товаров в формате:
 Название продукта, Цена руб. Остаток: X шт.
+- str - Отображает название, цену и остаток товара
+- add - Позволяет складывать общую стоимость двух товаров с учётом их количества
 
 #### Атрибуты класса:
 - category_count — количество созданных категорий
@@ -90,6 +94,12 @@ Store_App/
 - фикстуры
 - проверка исключений
 - изоляция тестов (сброс счётчиков)
+- Проверяются: 
+1. Итераторы 
+2. Магические методы (__str__, __add__)
+3. Геттеры и сеттеры 
+4. Логика подтверждения изменения цены 
+5. Граничные случаи
 
 Запуск тестов:
 
@@ -98,18 +108,20 @@ pytest --cov=src tests/ --cov-report=html
 pytest --cov
 ````
 ````
-Name                     Stmts   Miss  Cover
---------------------------------------------
-src/__init__.py              0      0   100%
-src/categoty.py             21      0   100%
-src/product.py              37      0   100%
-src/types_utils.py           3      0   100%
-src/utils.py                23      0   100%
-tests/__init__.py            0      0   100%
-tests/conftest.py           29      0   100%
-tests/test_category.py      19      0   100%
-tests/test_product.py       61      0   100%
-tests/test_utils.py         34      0   100%
---------------------------------------------
-TOTAL                      227      0   100%
+Name                              Stmts   Miss  Cover
+-----------------------------------------------------
+src/__init__.py                       0      0   100%
+src/category_iterator.py             14      0   100%
+src/categoty.py                      29      0   100%
+src/product.py                       41      0   100%
+src/types_utils.py                    3      0   100%
+src/utils.py                         23      0   100%
+tests/__init__.py                     0      0   100%
+tests/conftest.py                    29      0   100%
+tests/test_category.py               23      0   100%
+tests/test_category_iterator.py      20      0   100%
+tests/test_product.py                76      0   100%
+tests/test_utils.py                  34      0   100%
+-----------------------------------------------------
+TOTAL                               292      0   100%
 ```
