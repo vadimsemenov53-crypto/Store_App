@@ -55,9 +55,9 @@ def test_category_str(data_category, data_cat_add_product):
 
 def test_category_add_another(data_category, smartphone_obj_class_1, lawngrass_obj_class_1):
     assert (
-            data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-                                      "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
-                                      "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
+        data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+        "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
     )
     assert Category.category_count == 1
     assert Category.product_count == 3
@@ -65,10 +65,10 @@ def test_category_add_another(data_category, smartphone_obj_class_1, lawngrass_o
     data_category.add_product(smartphone_obj_class_1)
 
     assert (
-            data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-                                      "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
-                                      "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
-                                      "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
+        data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+        "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт."
     )
 
     assert Category.category_count == 1
@@ -77,11 +77,11 @@ def test_category_add_another(data_category, smartphone_obj_class_1, lawngrass_o
     data_category.add_product(lawngrass_obj_class_1)
 
     assert (
-            data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-                                      "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
-                                      "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
-                                      "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
-                                      "Газонная трава, 500.0 руб. Остаток: 20 шт."
+        data_category.products == "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n"
+        "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
+        "Samsung Galaxy S23 Ultra, 180000.0 руб. Остаток: 5 шт.\n"
+        "Газонная трава, 500.0 руб. Остаток: 20 шт."
     )
 
     assert Category.category_count == 1

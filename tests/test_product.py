@@ -1,4 +1,3 @@
-from tkinter.scrolledtext import example
 from unittest.mock import patch
 
 import pytest
@@ -120,8 +119,8 @@ def test_product_add_error(first_product, smartphone_obj_class_1):
     Product.clear_products()
     first = Product(**first_product)
 
-    with pytest.raises(TypeError, match='int не является объектом Product'):
+    with pytest.raises(TypeError, match="int не является объектом Product"):
         first + 2
 
-    with pytest.raises(TypeError, match='Smartphone не является объектом Product'):
+    with pytest.raises(TypeError, match="Smartphone не является объектом Product"):
         first + smartphone_obj_class_1
