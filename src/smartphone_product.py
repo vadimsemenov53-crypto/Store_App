@@ -18,7 +18,7 @@ class Smartphone(Product):
 
     def __add__(self, other: "Smartphone") -> float:
         """Метод сложения стоимости двух товаров, учитывая их количество."""
-        if isinstance(other, Smartphone):
+        if type(other) is Smartphone:
             return self.price * self.quantity + other.price * other.quantity
 
         raise TypeError(f'{other.__class__.__name__} не является объектом Smartphone')
