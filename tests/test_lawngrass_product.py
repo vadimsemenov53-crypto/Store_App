@@ -1,4 +1,6 @@
-def test_smartphone_product_base(lawngrass_obj_class_1):
+import pytest
+
+def test_lawngrass_product_base(lawngrass_obj_class_1):
     assert lawngrass_obj_class_1.name == "Газонная трава"
     assert lawngrass_obj_class_1.description == 'Элитная трава для газона'
     assert lawngrass_obj_class_1.price == 500.0
@@ -9,3 +11,15 @@ def test_smartphone_product_base(lawngrass_obj_class_1):
 
     assert len(lawngrass_obj_class_1.list_products) == 1
     assert (lawngrass_obj_class_1.__str__() == 'Газонная трава, 500.0 руб. Остаток: 20 шт.')
+
+
+def test_lawngrass_product_add(lawngrass_obj_class_1, lawngrass_obj_class_2):
+    assert lawngrass_obj_class_1 + lawngrass_obj_class_2 == 16750.0
+
+
+def test_lawngrass_product_add_error(lawngrass_obj_class_1, smartphone_obj_class_1):
+    with pytest.raises(TypeError, match='int не является объектом LawnGrass'):
+        lawngrass_obj_class_1 + 2
+
+    with pytest.raises(TypeError, match='Smartphone не является объектом LawnGrass'):
+        lawngrass_obj_class_1 + smartphone_obj_class_1

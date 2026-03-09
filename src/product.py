@@ -29,7 +29,7 @@ class Product:
         if isinstance(other, Product):
             return self.__price * self.quantity + other.price * other.quantity
 
-        raise TypeError(f'{other.__class__.__name__} не является подклассом Product')
+        raise TypeError(f'{other.__class__.__name__} не является объектом Product')
 
     @property
     def list_products(self) -> list["Product"]:

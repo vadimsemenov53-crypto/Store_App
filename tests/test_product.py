@@ -1,4 +1,7 @@
+from tkinter.scrolledtext import example
 from unittest.mock import patch
+
+import pytest
 
 from src.product import Product
 
@@ -100,7 +103,7 @@ def test_product_str(first_product, second_product):
     assert str(second) == "Iphone 15, 210000.0 руб. Остаток: 8 шт."
 
 
-def test_product_add(first_product, second_product):
+def test_product_add(first_product, second_product, smartphone_obj_class_1):
     Product.clear_products()
     first = Product(**first_product)
     second = Product(**second_product)
@@ -111,3 +114,20 @@ def test_product_add(first_product, second_product):
     assert second.quantity == 8
 
     assert first + second == 2580000.0
+
+    assert first + smartphone_obj_class_1 == 1800000.0
+
+
+def test_product_add_error(first_product, smartphone_obj_class_1):
+    Product.clear_products()
+    first = Product(**first_product)
+
+    class Example:
+        pass
+    example_1 = Example()
+
+    with pytest.raises(TypeError, match='int не является объектом Product'):
+        first + 2
+
+    with pytest.raises(TypeError, match='Example не является объектом Product'):
+        first + example_1
