@@ -13,3 +13,10 @@ class LawnGrass(Product):
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
+    def __add__(self, other: "LawnGrass") -> float:
+        """Метод сложения стоимости двух товаров, учитывая их количество."""
+        if isinstance(other, LawnGrass):
+            return self.price * self.quantity + other.price * other.quantity
+
+        raise TypeError(f'{other.__class__.__name__} не является объектом LawnGrass')
