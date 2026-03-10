@@ -115,12 +115,18 @@ def test_product_add(first_product, second_product, smartphone_obj_class_1):
     assert first + second == 2580000.0
 
 
-def test_product_add_error(first_product, smartphone_obj_class_1):
+def test_product_add_error(first_product, smartphone_obj_class_1, lawngrass_obj_class_1):
     Product.clear_products()
     first = Product(**first_product)
 
-    with pytest.raises(TypeError, match="int не является объектом Product"):
+    with pytest.raises(TypeError, match="int не является объектом Product или того же подкласса"):
         first + 2
 
-    with pytest.raises(TypeError, match="Smartphone не является объектом Product"):
+    with pytest.raises(TypeError, match="Smartphone не является объектом Product или того же подкласса"):
         first + smartphone_obj_class_1
+
+    with pytest.raises(TypeError, match='LawnGrass не является объектом Smartphone'):
+        smartphone_obj_class_1 + lawngrass_obj_class_1
+
+    with pytest.raises(TypeError, match='LawnGrass не является объектом Product или того же подкласса.'):
+        first + lawngrass_obj_class_1
