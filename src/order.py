@@ -1,6 +1,5 @@
 from src.product import Product
 from src.base_model import BaseModel
-from src.smartphone_product import Smartphone
 
 class Order(BaseModel):
     """ Класс для представления заказов. """

@@ -54,11 +54,4 @@ class Category(BaseModel):
 
     def get_total_price(self) -> float:
         """ Метод для получения общей стоимости всех товаров в категории. """
-        total_price = 0
-
-        for item in self.__products:
-            price = item.price
-            quantity = item.quantity
-            total_price += price * quantity
-
-        return total_price
+        return sum(item.price * item.quantity for item in self.__products)
