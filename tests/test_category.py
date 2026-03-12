@@ -86,3 +86,7 @@ def test_category_add_another(data_category, smartphone_obj_class_1, lawngrass_o
 
     assert Category.category_count == 1
     assert Category.product_count == 5
+
+
+def test_category_total_price(data_category):
+    assert data_category.get_total_price() == 3014000.0
