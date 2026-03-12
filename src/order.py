@@ -1,14 +1,16 @@
-from src.product import Product
 from src.base_model import BaseModel
+from src.product import Product
+
 
 class Order(BaseModel):
-    """ Класс для представления заказов. """
+    """Класс для представления заказов."""
+
     name: str
     description: str
     product: Product
     quantity: int
 
-    def __init__(self, name, description, product: Product, quantity: int):
+    def __init__(self, name: str, description: str, product: Product, quantity: int):
         """Метод, который инициализирует экземпляры класса."""
         self.name = name
         self.description = description
@@ -16,5 +18,5 @@ class Order(BaseModel):
         self.quantity = quantity
 
     def get_total_price(self) -> float:
-        """ Метод получение полной стоимости заказа с учетом количества. """
+        """Метод получение полной стоимости заказа с учетом количества."""
         return self.product.price * self.quantity
