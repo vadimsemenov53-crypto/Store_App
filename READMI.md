@@ -39,6 +39,7 @@ Store_App/
 - description — описание
 - __price — цена (приватный атрибут __price, getter и setter)
 - quantity — количество на складе
+- 
 #### Методы:
 - new_product(dict_product: ProductDict) — classmethod для создания нового товара из словаря; если товар с таким именем существует, суммирует количество и выбирает более высокую цену
 - list_products — property для получения всех товаров в виде списка объектов
@@ -46,6 +47,61 @@ Store_App/
 - clear_products() — classmethod для очистки списка товаров (используется в тестах)
 - str - Возвращает название категории и общее количество товаров (с учётом их количества).
 - product_list - Позволяет получить список объектов Product. Поддерживает использование в for.
+- Магический метод __add__ - Для товаров реализован оператор сложения +. Метод возвращает общую стоимость двух товаров с учётом их количества.
+```dockerfile
+__add__ -> 
+Метод работает только для объектов одного типа:
+Smartphone + Smartphone
+LawnGrass + LawnGrass
+При попытке сложить разные типы будет выброшено исключение TypeError.
+```
+### 📦 Наследование товаров
+В проекте реализованы специализированные типы товаров через механизм наследования.
+Базовым классом является Product, от которого наследуются конкретные типы товаров.
+
+### Smartphone
+Класс для представления смартфонов.
+
+#### Дополнительные атрибуты:
+- efficiency — производительность
+- model — модель устройства
+- memory — объём памяти
+- color — цвет устройства
+
+#### Пример создания:
+```
+phone = Smartphone(
+    "iPhone 15",
+    "512GB",
+    210000.0,
+    8,
+    98.5,
+    "A3102",
+    512,
+    "Gray"
+)
+```
+
+### LawnGrass
+Класс для представления газонной травы.
+
+#### Дополнительные атрибуты:
+- country — страна производства
+- germination_period — срок всхода
+- color — цвет травы
+
+#### Пример создания:
+```
+grass = LawnGrass(
+    "Газонная трава",
+    "Семена для газона",
+    500.0,
+    20,
+    "Нидерланды",
+    "7-10 дней",
+    "Зелёный"
+)
+```
 
 ### 🔹 Category
 #### Класс для представления категории товаров:
@@ -55,11 +111,29 @@ Store_App/
 - __products: list[Product]
 
 #### Методы:
-- add_product(product: Product) — добавляет новый объект Product в категорию
+- add_product(product: Product) — Метод позволяет добавлять в категорию только объекты класса Product или его наследников.
 - product — property, возвращает строку со списком товаров в формате:
 Название продукта, Цена руб. Остаток: X шт.
 - str - Отображает название, цену и остаток товара
 - add - Позволяет складывать общую стоимость двух товаров с учётом их количества
+
+#### add_product:
+```dockerfile
+Для проверки используется функция isinstance().
+Она позволяет убедиться, что переданный объект является:
+
+объектом класса Product
+
+или объектом класса-наследника (Smartphone, LawnGrass и др.)
+
+Если попытаться добавить любой другой объект, будет вызвано исключение TypeError.
+
+Пример:
+
+category.add_product(Smartphone(...))   # работает
+category.add_product(LawnGrass(...))    # работает
+category.add_product("строка")          # TypeError
+```
 
 #### Атрибуты класса:
 - category_count — количество созданных категорий
@@ -108,20 +182,24 @@ pytest --cov=src tests/ --cov-report=html
 pytest --cov
 ````
 ````
-Name                              Stmts   Miss  Cover
------------------------------------------------------
-src/__init__.py                       0      0   100%
-src/category_iterator.py             14      0   100%
-src/categoty.py                      29      0   100%
-src/product.py                       41      0   100%
-src/types_utils.py                    3      0   100%
-src/utils.py                         23      0   100%
-tests/__init__.py                     0      0   100%
-tests/conftest.py                    29      0   100%
-tests/test_category.py               23      0   100%
-tests/test_category_iterator.py      20      0   100%
-tests/test_product.py                76      0   100%
-tests/test_utils.py                  34      0   100%
------------------------------------------------------
-TOTAL                               292      0   100%
+Name                               Stmts   Miss  Cover
+------------------------------------------------------
+src/__init__.py                        0      0   100%
+src/category_iterator.py              14      0   100%
+src/categoty.py                       29      0   100%
+src/lawngrass_product.py              11      0   100%
+src/product.py                        43      0   100%
+src/smartphone_product.py             12      0   100%
+src/types_utils.py                     3      0   100%
+src/utils.py                          23      0   100%
+tests/__init__.py                      0      0   100%
+tests/conftest.py                     47      0   100%
+tests/test_category.py                35      0   100%
+tests/test_category_iterator.py       20      0   100%
+tests/test_lawngrass_product.py       18      0   100%
+tests/test_product.py                 84      0   100%
+tests/test_smartphone_product.py      19      0   100%
+tests/test_utils.py                   34      0   100%
+------------------------------------------------------
+TOTAL                                392      0   100%
 ```

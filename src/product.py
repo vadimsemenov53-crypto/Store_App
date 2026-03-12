@@ -26,7 +26,10 @@ class Product:
 
     def __add__(self, other: "Product") -> float:
         """Метод сложения стоимости двух товаров, учитывая их количество."""
-        return self.__price * self.quantity + other.price * other.quantity
+        if type(other) is self.__class__:
+            return self.__price * self.quantity + other.price * other.quantity
+
+        raise TypeError(f"{other.__class__.__name__} не является объектом Product или того же подкласса.")
 
     @property
     def list_products(self) -> list["Product"]:
