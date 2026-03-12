@@ -1,7 +1,8 @@
 from src.product import Product
+from src.base_model import BaseModel
 
 
-class Category:
+class Category(BaseModel):
     """Класс для представления категорий товаров."""
 
     name: str
@@ -50,3 +51,14 @@ class Category:
 
         self.__products.append(product)
         Category.product_count += 1
+
+    def get_total_price(self) -> float:
+        """ Метод для получения общей стоимости всех товаров в категории. """
+        total_price = 0
+
+        for item in self.__products:
+            price = item.price
+            quantity = item.quantity
+            total_price += price * quantity
+
+        return total_price
