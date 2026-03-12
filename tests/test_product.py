@@ -83,7 +83,7 @@ def test_product_price_setter(mock_inp, capsys, first_product):
     assert first.price == 180000.0
 
     message_1 = capsys.readouterr()
-    assert message_1.out.strip() == 'Product (Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)'
+    assert message_1.out.strip() == "Product (Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5)"
 
     first.price = 200000
     assert first.price == 200000
@@ -128,8 +128,8 @@ def test_product_add_error(first_product, smartphone_obj_class_1, lawngrass_obj_
     with pytest.raises(TypeError, match="Smartphone не является объектом Product или того же подкласса"):
         first + smartphone_obj_class_1
 
-    with pytest.raises(TypeError, match='LawnGrass не является объектом Smartphone'):
+    with pytest.raises(TypeError, match="LawnGrass не является объектом Smartphone"):
         smartphone_obj_class_1 + lawngrass_obj_class_1
 
-    with pytest.raises(TypeError, match='LawnGrass не является объектом Product или того же подкласса.'):
+    with pytest.raises(TypeError, match="LawnGrass не является объектом Product или того же подкласса."):
         first + lawngrass_obj_class_1

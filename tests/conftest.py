@@ -2,9 +2,9 @@ import pytest
 
 from src.categoty import Category
 from src.lawngrass_product import LawnGrass
+from src.order import Order
 from src.product import Product
 from src.smartphone_product import Smartphone
-from src.order import Order
 
 
 @pytest.fixture()
@@ -89,4 +89,4 @@ def lawngrass_obj_class_2():
 
 @pytest.fixture()
 def object_orders(smartphone_obj_class_2):
-    return Order('Заказ 1', 'Покупка телефона', smartphone_obj_class_2, 3)
+    return Order("Заказ 1", "Покупка телефона", smartphone_obj_class_2, 3)
