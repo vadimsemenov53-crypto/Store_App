@@ -1,8 +1,9 @@
 from src.types_utils import ProductDict
 from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
 
 
-class Product(BaseProduct):
+class Product(BaseProduct, PrintMixin):
     """Класс для представления товара."""
 
     name: str
@@ -20,6 +21,8 @@ class Product(BaseProduct):
         self.quantity = quantity
 
         self.__class__.__list_products.append(self)
+
+        super().__init__()
 
     def __str__(self) -> str:
         """Метод, отображения продуктов."""
