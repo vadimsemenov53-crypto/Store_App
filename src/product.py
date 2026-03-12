@@ -1,7 +1,8 @@
 from src.types_utils import ProductDict
+from src.base_product import BaseProduct
 
 
-class Product:
+class Product(BaseProduct):
     """Класс для представления товара."""
 
     name: str
