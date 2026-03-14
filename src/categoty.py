@@ -60,10 +60,10 @@ class Category(BaseModel):
         else:
             self.__products.append(product)
             Category.product_count += 1
-            print("Товар добавлена успешно.")
+            print("Товар добавлен успешно.")
 
         finally:
-            print("Обработка добавления товара прошла успешно.")
+            print("Обработка добавления товара завершена.")
 
     def get_total_price(self) -> float:
         """Метод для получения общей стоимости всех товаров в категории."""

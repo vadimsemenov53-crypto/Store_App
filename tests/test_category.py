@@ -110,8 +110,8 @@ def test_category_add_product_consol(capsys, data_category):
     message = capsys.readouterr()
 
     assert message.out.strip().split("\n")[-3] == "Product (test, test, 12000, 2)"
-    assert message.out.strip().split("\n")[-2] == "Товар добавлена успешно."
-    assert message.out.strip().split("\n")[-1] == "Обработка добавления товара прошла успешно."
+    assert message.out.strip().split("\n")[-2] == "Товар добавлен успешно."
+    assert message.out.strip().split("\n")[-1] == "Обработка добавления товара завершена."
 
 
 def test_category_add_product_error(capsys, data_category):
