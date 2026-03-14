@@ -55,3 +55,10 @@ class Category(BaseModel):
     def get_total_price(self) -> float:
         """Метод для получения общей стоимости всех товаров в категории."""
         return sum(item.price * item.quantity for item in self.__products)
+
+    def get_avg_price_products(self) -> float:
+        """Метод для получения средней стоимости товара в категории."""
+        try:
+            return round(sum(item.price for item in self.__products) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0

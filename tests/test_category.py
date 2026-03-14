@@ -90,3 +90,11 @@ def test_category_add_another(data_category, smartphone_obj_class_1, lawngrass_o
 
 def test_category_total_price(data_category):
     assert data_category.get_total_price() == 3014000.0
+
+def test_category_avg_price_product(data_category):
+    assert data_category.get_avg_price_products() == 140333.33
+
+def test_category_avg_price_none_product():
+    category = Category('test', 'test', [])
+
+    assert category.get_avg_price_products() == 0
