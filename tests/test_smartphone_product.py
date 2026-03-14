@@ -33,8 +33,5 @@ def test_smartphone_product_add_error(smartphone_obj_class_1, lawngrass_obj_clas
 def test_smartphone_product_none_quantity():
     Product.clear_products()
 
-    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен.'):
-        Smartphone(
-            "Samsung Galaxy S23", "256GB", 180000.0, 0,
-            95.5, "S23 Ultra", 256, "Серый"
-        )
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Smartphone("Samsung Galaxy S23", "256GB", 180000.0, 0, 95.5, "S23 Ultra", 256, "Серый")

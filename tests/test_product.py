@@ -138,7 +138,5 @@ def test_product_add_error(first_product, smartphone_obj_class_1, lawngrass_obj_
 def test_product_none_quantity():
     Product.clear_products()
 
-    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен.'):
-        Product('Iphone 15', 'description": "512GB, Gray space', 25000, 0)
-
-
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Product("Iphone 15", 'description": "512GB, Gray space', 25000, 0)
