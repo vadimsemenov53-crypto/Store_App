@@ -1,6 +1,7 @@
 import pytest
 
 from src.categoty import Category
+from src.product import Product
 
 
 def test_category_base(data_category):
@@ -98,3 +99,19 @@ def test_category_avg_price_none_product():
     category = Category('test', 'test', [])
 
     assert category.get_avg_price_products() == 0
+
+
+def test_category_add_product_consol(capsys, data_category):
+    product = Product('test', 'test', 12000, 2)
+
+    data_category.add_product(product)
+    message = capsys.readouterr()
+
+    assert message.out.strip().split('\n')[-3] == 'Product (test, test, 12000, 2)'
+    assert message.out.strip().split('\n')[-2] == 'Товар добавлена успешно.'
+    assert message.out.strip().split('\n')[-1] == 'Обработка добавления товара прошла успешно.'
+
+
+def test_category_add_product_error(capsys, data_category):
+    with pytest.raises(ValueError, match='Товар с нулевым количеством не может быть добавлен.'):
+        Product('test', 'test', 12000, 0)
