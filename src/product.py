@@ -1,7 +1,9 @@
+from src.base_product import BaseProduct
+from src.print_mixin import PrintMixin
 from src.types_utils import ProductDict
 
 
-class Product:
+class Product(PrintMixin, BaseProduct):
     """Класс для представления товара."""
 
     name: str
@@ -20,11 +22,13 @@ class Product:
 
         self.__class__.__list_products.append(self)
 
+        super().__init__()
+
     def __str__(self) -> str:
         """Метод, отображения продуктов."""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other: "Product") -> float:
+    def __add__(self, other: "BaseProduct") -> float:
         """Метод сложения стоимости двух товаров, учитывая их количество."""
         if type(other) is self.__class__:
             return self.__price * self.quantity + other.price * other.quantity
