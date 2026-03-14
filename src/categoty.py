@@ -1,6 +1,6 @@
 from src.base_model import BaseModel
-from src.product import Product
 from src.exceptions import ZeroProductQuantity
+from src.product import Product
 
 
 class Category(BaseModel):
@@ -52,18 +52,18 @@ class Category(BaseModel):
 
         try:
             if product.quantity == 0:
-                raise ZeroProductQuantity('Нельзя добавить товар с нулевым количеством.')
+                raise ZeroProductQuantity("Нельзя добавить товар с нулевым количеством.")
 
         except ZeroProductQuantity as e:
-            print(f'{ZeroProductQuantity.__name__}: {e}')
+            print(f"{ZeroProductQuantity.__name__}: {e}")
 
         else:
             self.__products.append(product)
             Category.product_count += 1
-            print('Товар добавлена успешно.')
+            print("Товар добавлена успешно.")
 
         finally:
-            print('Обработка добавления товара прошла успешно.')
+            print("Обработка добавления товара прошла успешно.")
 
     def get_total_price(self) -> float:
         """Метод для получения общей стоимости всех товаров в категории."""

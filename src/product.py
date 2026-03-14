@@ -20,7 +20,7 @@ class Product(PrintMixin, BaseProduct):
         self.__price = price
 
         if quantity == 0:
-            raise ValueError('Товар с нулевым количеством не может быть добавлен.')
+            raise ValueError("Товар с нулевым количеством не может быть добавлен.")
         self.quantity = quantity
 
         self.__class__.__list_products.append(self)
