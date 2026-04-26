@@ -133,3 +133,10 @@ def test_product_add_error(first_product, smartphone_obj_class_1, lawngrass_obj_
 
     with pytest.raises(TypeError, match="LawnGrass не является объектом Product или того же подкласса."):
         first + lawngrass_obj_class_1
+
+
+def test_product_none_quantity():
+    Product.clear_products()
+
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Product("Iphone 15", 'description": "512GB, Gray space', 25000, 0)

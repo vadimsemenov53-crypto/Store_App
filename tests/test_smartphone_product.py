@@ -1,5 +1,8 @@
 import pytest
 
+from src.product import Product
+from src.smartphone_product import Smartphone
+
 
 def test_smartphone_product_base(smartphone_obj_class_1):
     assert smartphone_obj_class_1.name == "Samsung Galaxy S23 Ultra"
@@ -25,3 +28,10 @@ def test_smartphone_product_add_error(smartphone_obj_class_1, lawngrass_obj_clas
 
     with pytest.raises(TypeError, match="LawnGrass не является объектом Smartphone"):
         smartphone_obj_class_1 + lawngrass_obj_class_1
+
+
+def test_smartphone_product_none_quantity():
+    Product.clear_products()
+
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен."):
+        Smartphone("Samsung Galaxy S23", "256GB", 180000.0, 0, 95.5, "S23 Ultra", 256, "Серый")

@@ -1,4 +1,5 @@
 from src.base_model import BaseModel
+from src.exceptions import ZeroProductQuantity
 from src.product import Product
 
 
@@ -15,7 +16,20 @@ class Order(BaseModel):
         self.name = name
         self.description = description
         self.product = product
-        self.quantity = quantity
+
+        try:
+            if quantity == 0:
+                raise ZeroProductQuantity("Нельзя оформить заказ с нулевым количеством товара.")
+
+        except ZeroProductQuantity as e:
+            print(f"{ZeroProductQuantity.__name__}: {e}")
+
+        else:
+            self.quantity = quantity
+            print("Товар добавлен успешно.")
+
+        finally:
+            print("Обработка добавления товара завершена.")
 
     def get_total_price(self) -> float:
         """Метод получение полной стоимости заказа с учетом количества."""

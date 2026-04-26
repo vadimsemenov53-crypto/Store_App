@@ -1,4 +1,5 @@
 from src.base_model import BaseModel
+from src.exceptions import ZeroProductQuantity
 from src.product import Product
 
 
@@ -49,9 +50,28 @@ class Category(BaseModel):
         if not isinstance(product, Product):
             raise TypeError("Можно добавлять только объекты Product или его наследников.")
 
-        self.__products.append(product)
-        Category.product_count += 1
+        try:
+            if product.quantity == 0:
+                raise ZeroProductQuantity("Нельзя добавить товар с нулевым количеством.")
+
+        except ZeroProductQuantity as e:
+            print(f"{ZeroProductQuantity.__name__}: {e}")
+
+        else:
+            self.__products.append(product)
+            Category.product_count += 1
+            print("Товар добавлен успешно.")
+
+        finally:
+            print("Обработка добавления товара завершена.")
 
     def get_total_price(self) -> float:
         """Метод для получения общей стоимости всех товаров в категории."""
         return sum(item.price * item.quantity for item in self.__products)
+
+    def get_avg_price_products(self) -> float:
+        """Метод для получения средней стоимости товара в категории."""
+        try:
+            return round(sum(item.price for item in self.__products) / len(self.__products), 2)
+        except ZeroDivisionError:
+            return 0
